@@ -7,10 +7,12 @@ class Node:
         self.parent = parent
         self.value = value
 
+    # возвращает предка
     def get_parent(self):
         return self.parent
 
-    def get_parents_line(self)-> list:
+    # возвращает линию предков
+    def get_parents_line(self) -> list:
         buff = self
         parents = []
         while buff:
@@ -18,14 +20,17 @@ class Node:
             buff = buff.parent
         return parents
 
+    # добавляет наследника
     def add_child(self, node):
         self.children += node
 
+    # возврает массив наследников
     def get_children(self) -> list:
         return self.children
 
 
 class ClassTree:
+    # root - корень дерева
     def __init__(self, root: Node):
         self.root = root
 
@@ -43,6 +48,7 @@ class ClassTree:
                 return False
         return True
 
+    # возращает первого общего предка
     def get_common_parent(self, node1: Node, node2: Node) -> Node:
         parents1 = node1.get_parents_line()
         parents2 = node2.get_parents_line()
